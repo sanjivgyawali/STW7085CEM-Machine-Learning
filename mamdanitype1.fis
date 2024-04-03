@@ -1,0 +1,150 @@
+[System]
+Name='mamdanitype1'
+Type='mamdani'
+Version=2.0
+NumInputs=7
+NumOutputs=7
+NumRules=26
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Ambient Temperature'
+Range=[0 1]
+NumMFs=3
+MF1='Cold':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='Medium':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='Hot':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Input2]
+Name='Humidity Level'
+Range=[0 1]
+NumMFs=3
+MF1='Low ':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='Medium':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='High':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Input3]
+Name='Outdoor Temperature'
+Range=[0 1]
+NumMFs=3
+MF1='Low ':'trimf',[0 0.5 1]
+MF2='Medium ':'trimf',[0 0.5 1]
+MF3='High':'trimf',[0 0.5 1]
+
+[Input4]
+Name='Light Level'
+Range=[0 1]
+NumMFs=3
+MF1='Dark':'trimf',[0 0.5 1]
+MF2='Dim':'trimf',[0 0.5 1]
+MF3='Bright':'trimf',[0 0.5 1]
+
+[Input5]
+Name='Time of day'
+Range=[0 1]
+NumMFs=4
+MF1='Morning':'trimf',[0 0.5 1]
+MF2='Afternoon':'trimf',[0 0.5 1]
+MF3='Evening':'trimf',[0 0.5 1]
+MF4='Night':'trimf',[0 0.5 1]
+
+[Input6]
+Name='Motion Sensor'
+Range=[0 1]
+NumMFs=2
+MF1='No Movement':'trimf',[0 0.5 1]
+MF2='Movement':'trimf',[0 0.5 1]
+
+[Input7]
+Name='Facial Expressions'
+Range=[0 1]
+NumMFs=3
+MF1='Neutral':'trimf',[0 0.5 1]
+MF2='Happy':'trimf',[0 0.5 1]
+MF3='Sad':'trimf',[0 0.5 1]
+
+[Output1]
+Name='Air Conditioner'
+Range=[0 1]
+NumMFs=3
+MF1='Off':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='Low':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='High':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Output2]
+Name='Humidifier'
+Range=[0 1]
+NumMFs=2
+MF1='On':'trimf',[0 0.5 1]
+MF2='Off':'trimf',[0 0.5 1]
+
+[Output3]
+Name='Blinds Control'
+Range=[0 1]
+NumMFs=3
+MF1='Closed':'trimf',[0 0.5 1]
+MF2='Partially Open':'trimf',[0 0.5 1]
+MF3='Fully Open':'trimf',[0 0.5 1]
+
+[Output4]
+Name='Light'
+Range=[0 1]
+NumMFs=3
+MF1='Off':'trimf',[0 0.5 1]
+MF2='Dimmed':'trimf',[0 0.5 1]
+MF3='Bright':'trimf',[0 0.5 1]
+
+[Output5]
+Name='Ramps'
+Range=[0 1]
+NumMFs=2
+MF1='Retracted':'trimf',[0 0.5 1]
+MF2='Deployed':'trimf',[0 0.5 1]
+
+[Output6]
+Name='Kitchen Worktop'
+Range=[0 1]
+NumMFs=3
+MF1='Lowered':'trimf',[0 0.5 1]
+MF2='Standard Height':'trimf',[0 0.5 1]
+MF3='Raised':'trimf',[0 0.5 1]
+
+[Output7]
+Name='Entertainment Volume Control'
+Range=[0 1]
+NumMFs=3
+MF1='Mute':'trimf',[0 0.5 1]
+MF2='Low':'trimf',[0 0.5 1]
+MF3='High':'trimf',[0 0.5 1]
+
+[Rules]
+2 0 0 0 1 0 0, 1 1 0 0 0 0 0 (1) : 1
+3 0 0 0 2 0 0, 3 0 0 0 0 0 0 (1) : 1
+2 1 0 0 0 0 0, 1 1 0 0 0 0 0 (1) : 1
+2 3 0 0 0 0 0, 1 2 0 0 0 0 0 (1) : 1
+2 0 0 1 3 0 0, 1 0 0 3 0 0 0 (1) : 1
+2 0 0 3 2 0 0, 1 0 0 1 0 0 0 (1) : 2
+3 0 0 2 0 0 0, 1 0 2 0 0 0 0 (1) : 1
+1 0 0 3 0 0 0, 1 0 3 0 0 0 0 (1) : 1
+2 0 0 0 0 2 0, 1 0 0 0 2 0 0 (1) : 1
+2 0 0 0 0 1 0, 1 0 0 0 1 0 0 (1) : 1
+2 0 0 0 1 2 0, 1 0 0 0 0 3 0 (1) : 2
+2 0 0 0 3 2 0, 1 0 0 0 0 3 0 (1) : 1
+2 0 0 0 4 0 0, 1 0 0 0 0 0 2 (1) : 1
+2 0 0 0 0 2 3, 1 0 0 0 0 0 1 (1) : 1
+1 0 0 0 0 2 2, 1 0 0 0 0 0 3 (1) : 1
+2 0 0 0 4 1 0, 2 0 0 1 0 0 0 (1) : 1
+1 2 1 0 0 0 0, 1 1 2 0 0 0 0 (1) : 1
+2 0 0 2 3 0 0, 1 0 0 2 0 0 2 (1) : 1
+2 0 0 0 1 2 0, 1 0 2 0 2 3 0 (1) : 1
+3 2 3 0 0 0 0, 3 2 1 0 0 0 0 (1) : 1
+2 0 0 0 2 1 0, 1 0 1 1 0 0 1 (1) : 1
+1 0 0 0 3 0 0, 2 0 1 2 0 0 0 (1) : 1
+2 0 0 2 4 1 0, 1 1 0 1 0 0 1 (1) : 1
+1 0 0 1 2 2 0, 1 0 3 0 0 0 0 (1) : 1
+2 0 0 0 3 0 2, 1 0 0 2 1 0 2 (1) : 1
+1 0 0 0 0 0 0, 1 0 0 0 0 0 0 (1) : 1
